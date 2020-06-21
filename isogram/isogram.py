@@ -1,13 +1,12 @@
 from collections import Counter
 def is_isogram(string):
-    chr_allowed = (' ', '-')
-    key_set = set()
-    count = Counter(string.lower())
-
-    if not count.keys():
+    if string == '':
         return True
+    chr_allowed = (' ', '-')
 
-    for val in count.keys():
-        if val not in chr_allowed :
-            key_set.add(count[val])
-    return len(key_set) == 1
+    for word in string.lower():
+        if word not in chr_allowed and string.lower().count(word) > 1:
+            return False
+        else:
+            continue
+    return True
